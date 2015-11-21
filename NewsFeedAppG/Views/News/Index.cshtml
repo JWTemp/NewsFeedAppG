@@ -1,0 +1,27 @@
+﻿@model IEnumerable<NewsFeedAppG.Models.NewsItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="stream_news">
+    @foreach (var item in Model)
+    {
+        <article class="news_item" id="news_@item.ID">
+            <section class="news_published">@item.published_date</section>
+            <h2 class="news__title"><a href="@item.link">@item.title</a></h2>
+            <div class="news_summary">
+                <p>@item.description</p>
+                <a class="btn btn-default" href="@item.link">Read the full story »</a>
+            </div>
+        </article>
+    }
+
+</div>
+
+    @if (ViewData["moreNews"] != null)
+    {
+        <div>    <a class="btn btn-primary" href='@ViewData["moreNews"].ToString()' role="button" id="moreLink">More</a> </div>
+    }
+
+
